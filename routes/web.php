@@ -25,3 +25,10 @@ Route::post('/auth/logout','LoginController@logout');
 #로그인
 Route::post('/auth/login','LoginController@store');
 
+#게시판
+Route::post('/articles/store','ArticlesController@store');
+Route::get('/articles/show/{id}','ArticlesController@show');
+Route::delete('articles/delete/{id}',"ArticlesController@destroy");
+Route::get('/articles/index','ArticlesController@index');
+
+
