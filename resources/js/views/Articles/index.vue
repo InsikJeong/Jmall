@@ -39,7 +39,7 @@ export default {
         },
         show(id){
             // this.$router.push('/articles/show/'+id);
-            this.$router.push({name:'articles_show', params : {id:id} });
+            this.$router.push({ name:'articles_show', params : {id:id} });
         },
     }
 }

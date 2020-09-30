@@ -2114,6 +2114,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2125,7 +2127,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // console.log(this.$router.params.id,"아이디");
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/articles/show/' + this.$router.params.id).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/articles/show/' + this.$route.params.id).then(function (res) {
+      console.log(res.data, "아티클 쇼");
       _this.article = res.data;
     })["catch"](function (err) {
       console.log(err);
@@ -2135,7 +2138,7 @@ __webpack_require__.r(__webpack_exports__);
     del: function del(id) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]('articles/delete/' + id).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]('/articles/delete/' + id).then(function (res) {
         console.log('삭제성공');
 
         _this2.$router.push('/articles');
@@ -21667,7 +21670,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", [_c("h1", [_vm._v(_vm._s(_vm.article))])])
+  return _c("main", [
+    _c("h3", [_vm._v("제목 : " + _vm._s(_vm.article.title))]),
+    _vm._v(" "),
+    _c("p", [_vm._v("내용 : " + _vm._s(_vm.article.content))]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.edit(_vm.article.id)
+          }
+        }
+      },
+      [_vm._v("수정")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.del(_vm.article.id)
+          }
+        }
+      },
+      [_vm._v("삭제")]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
