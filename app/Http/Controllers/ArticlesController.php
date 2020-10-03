@@ -65,7 +65,9 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = \App\Articles::whereId($id)->first();
+
+        return response()->json($article,200);
     }
 
     /**
@@ -77,7 +79,12 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = \App\Articles::whereId($id)->update([
+            'title'=>$request->title,
+            'content'=>$request->content,
+        ]);
+        
+        return response()->json($article,200);
     }
 
     /**

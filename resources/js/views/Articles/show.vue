@@ -12,7 +12,8 @@ export default {
     data(){
         return{
             article:{
-
+                title:'',
+                content:'',
             }
         }
     },
@@ -39,7 +40,13 @@ export default {
             })
         },
         edit(id){
-
+            axios.get('/articles/edit/'+id)
+            .then((res)=>{
+                this.$router.push('/articles/edit/'+id);
+            })
+            .catch((err)=>{
+                console.log('에딧실패',err);
+            })
         }
     }
 }

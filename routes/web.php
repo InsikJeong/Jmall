@@ -28,7 +28,9 @@ Route::post('/auth/login','LoginController@store');
 #게시판
 Route::post('/articles/store','ArticlesController@store');
 Route::get('/articles/show/{id}','ArticlesController@show');
+Route::get('/articles/edit/{id}','ArticlesController@edit');
 Route::delete('articles/delete/{id}',"ArticlesController@destroy");
 Route::get('/articles/index','ArticlesController@index');
+Route::patch('articles/update/{id}','ArticlesController@update');
 
 

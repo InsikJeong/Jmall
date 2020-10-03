@@ -7,6 +7,7 @@ import Login from './views/Login.vue';
 import Articles_index from './views/Articles/index.vue';
 import Articles_create from './views/Articles/create.vue';
 import Articles_show from './views/Articles/show.vue';
+import Articles_edit from './views/Articles/edit.vue';
 
 Vue.use(Router);
 
@@ -36,6 +37,11 @@ const routes = [
         path:'/articles/create',
         name:'articles_create',
         component:Articles_create
+    },
+    {
+        path:'/articles/edit/:id',
+        name:'articles_edit',
+        component:Articles_edit
     },
     {
         path:'/login',
