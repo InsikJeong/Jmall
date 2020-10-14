@@ -18,6 +18,8 @@ export default {
     data(){
         return{
             user:{
+                id:'',
+                name:'',
                 email:'',
                 password:'',
             }
@@ -29,18 +31,17 @@ export default {
                 'email':this.user.email,
                 'password':this.user.password,
             }
-            // ,{
-            // headers: {
-            //   'x-csrf-token': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
-            //   'Accept' : 'application/json'
-            // }}
             )
             .then((res)=>{
-                console.log("성공",res);
-                this.$router.push('/welcome')
+                console.log("성공",res.data);
+                localStorage.id = this.user.id;
+                localStorage.name = this.user.name;
+                localStorage.email = this.user.email;
+                this.$store.commit('islogged')
+                this.$router.push('/')
             })
             .catch((err)=>{
-                console.log('실패');
+                console.log('실패',err);
             })
         }
     }

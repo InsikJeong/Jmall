@@ -11,6 +11,14 @@ import Articles_edit from './views/Articles/edit.vue';
 
 Vue.use(Router);
 
+// const requireAuth = () => (to, from, next) => {
+//     if (store.state.accessToken !== '') {
+//       return next();
+//     }
+//     next('/login');
+//   };
+  
+  
 const routes = [
     {
         path:'/welcome',
@@ -25,7 +33,8 @@ const routes = [
     {
         path:'/articles',
         name:'articles',
-        component:Articles_index
+        component:Articles_index,
+        // beforeEnter: requireAuth()
     },
     {
         path:'/articles/show/:id',

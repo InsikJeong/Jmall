@@ -4,6 +4,7 @@ import Footer from './components/Footer.vue';
 import Main from './views/Main.vue';
 import Home from './views/Home.vue';
 import router from './router';
+import store from './store';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import 'bootstrap';
 
@@ -13,5 +14,6 @@ Vue.component('Footer-component',Footer);
 new Vue({
     el: '#app', 
     router,
+    store,
     render: h => h(Home) 
 });

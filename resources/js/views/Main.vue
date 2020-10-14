@@ -1,31 +1,45 @@
 <template>
-	<main> 
-        <div>
-
-        </div>
-    	<h3> Main page </h3> 
-        <button class="btn btn-primary"> complete! </button>
-    </main> 
+    <div>
+        <h1>
+            Welcome {{user.name}}!!
+        </h1>
+    </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data(){
         return{
-            user:'',
-            loading:false,
+            user:{
+                id:'',
+                name:'',
+                email:'',
+            },
         }
     },
-    // mounted(){
-    //     this.init();
-    // },
-    // methods:{
-    //     init(){
-    //         this.req.get('/auth/init').then(res=>{
-    //             this.user = response.data.user;
-    //         })
-    //     }
-    // }
+    created:function(){
+      axios.get('/auth/init')
+      .then((res)=>{
+          if(res.data.user == null){
+              this.user.name="Guest";
+              localStorage.name = '';
+              localStorage.email = '';
+              localStorage.id = '';
+          }
+          else{        
+              this.user=res.data.user;
+              console.log('웰컴',this.user);
+              localStorage.id = this.user.id;
+              localStorage.name = this.user.name;
+              localStorage.email = this.user.email;
+          }
+      })
+    },
+    methods:{
+
+    },
+
 }
 </script>
 
