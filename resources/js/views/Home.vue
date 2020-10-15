@@ -11,7 +11,6 @@
 import Header from '../components/Header.vue';
 import axios from 'axios';
 export default {
-    name:'app',
     data(){
         return{
             user:{
@@ -21,7 +20,7 @@ export default {
             },
         }
     },
-    mounted(){
+    created(){
         this.init();
     },
     methods:{

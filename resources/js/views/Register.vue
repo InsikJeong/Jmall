@@ -1,12 +1,17 @@
 <template>
     <div>
-        {{errors}}
-        <label for="">이름</label>
-        <input v-model="register.name" type="text">
-        <label for="">이메일</label>
-        <input v-model="register.email" type="text">
-        <label for="">비밀번호</label>
-        <input v-model="register.password" type="password">
+        <div>
+            <label for="">이름</label>
+            <input v-model="register.name" type="text">
+        </div>
+        <div>
+            <label for="">이메일</label>
+            <input v-model="register.email" type="text">
+        </div>
+        <div>
+            <label for="">비밀번호</label>
+            <input v-model="register.password" type="password">
+        </div>
         <button v-on:click="auth">회원가입</button>
     </div>
 </template>

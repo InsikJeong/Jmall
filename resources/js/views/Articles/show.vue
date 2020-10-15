@@ -2,7 +2,7 @@
   <main>
     <h3>제목 : {{article.title}}</h3>
     <p>내용 : {{article.content}}</p>
-    <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button>
+    <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button> <button v-on:click="back()">뒤로가기</button>
   </main>
 </template>
 
@@ -47,6 +47,10 @@ export default {
             .catch((err)=>{
                 console.log('에딧실패',err);
             })
+        }
+        ,
+        back(){
+            this.$router.go(-1);
         }
     }
 }

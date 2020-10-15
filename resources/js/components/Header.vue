@@ -1,21 +1,31 @@
 <template>
     <main>
-        <nav>
-            <router-link to="/articles">
-            <span>Articles</span>
-            </router-link>
-            <div v-if="this.$store.state.logged">
-                <span v-on:click="logout()">logout</span>
-            </div>
-            <div v-else>
-                <router-link to="/login">
-                <span>login</span>
-                </router-link>
-        
-                <router-link to="/register">
-                <span>register</span>
-                </router-link>
-            </div>
+        <nav class="header">
+            <ul>
+                <li class="nav_logo">
+                    <router-link to="/welcome">
+                    <span>J Mall</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/articles">
+                    <span>Articles</span>
+                    </router-link>
+                </li>
+                <li v-if="this.$store.state.logged" class="nav_logged">
+                    <span v-on:click="logout()">logout</span>
+                </li>
+                <li v-else class="nav_logged">
+                    <router-link to="/login">
+                    <span>login</span>
+                    </router-link>
+            
+                    <router-link to="/register">
+                    <span>register</span>
+                    </router-link>
+                </li>
+            </ul>
+
         </nav>
     </main>
 </template>
@@ -57,5 +67,26 @@ export default {
 </script>
 
 <style>
-
+    ul>li{
+        display: inline;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .nav_logged{
+        margin-left: 60%;
+    }
+    .header{
+        background:#5eaeff;
+        text-align: center;
+        color: white;
+        width: 100%;
+    }
+    span{
+        color: white;
+    }
+    .nav_logo{
+        color: beige;
+        font-size: 50px;
+        margin-right: 40px;
+    }
 </style>

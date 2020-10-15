@@ -1,9 +1,13 @@
 <template>
-    <div>
-        <label for="">아이디</label>
-        <input v-model="user.email" type="text">
-        <label for="">비밀번호</label>
-        <input v-model="user.password" type="password">
+    <div class="login_conteiner">
+        <div>
+            <label for="">아이디</label>
+            <input v-model="user.email" type="text">
+        </div>
+        <div>
+            <label for="">비밀번호</label>
+            <input v-model="user.password" type="password">
+        </div>
         <button v-on:click="login">로그인</button>
         <router-link to="/register">
             <span>회원가입</span>
@@ -49,5 +53,7 @@ export default {
 </script>
 
 <style>
-
+    .login_conteiner{
+        
+    }
 </style>
