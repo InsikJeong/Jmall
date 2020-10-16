@@ -36,9 +36,10 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        $articles = \App\Articles::create([
+        $articles = $request->user()->Articles()->create([
             'title' => $request->title,
             'content' => $request->content,
+            'user_id' => $request->user_id,
         ]);
 
         return response()->json($articles,200);

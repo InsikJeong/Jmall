@@ -15,7 +15,7 @@ export default {
 <style>
     .footer{
         width:100%;
-        height:40px;
+        height:30px;
         position:absolute;
         bottom:0;
         background:#5eaeff;

@@ -22,14 +22,19 @@ export default {
             article:{
                 title:'',
                 content:'',
+                user_id:localStorage.id,
             }
         }
+    },
+    created:function(){
+        console.log(this.article);
     },
     methods:{
         store(){
             axios.post('/articles/store',{
                 'title':this.article.title,
                 'content':this.article.content,
+                'user_id':this.article.user_id,
             }
             )
             .then((res)=>{

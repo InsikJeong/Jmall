@@ -1,0 +1,41 @@
+[33mcommit 6034ed7837d1732067cab8f25b018eb47cd3671f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: 정인식 <insick6763@gmail.com>
+Date:   Thu Oct 15 17:48:52 2020 +0900
+
+    css edit
+
+[33mcommit 4abf7323e8ce3150d7bb5e2675c373f34aee7e6a[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: 정인식 <insick6763@gmail.com>
+Date:   Wed Oct 14 17:50:21 2020 +0900
+
+    vuex로 로그인 로그아웃 구분
+
+[33mcommit 36ab099dfef1bb4bd18a91e9e47e5ce317811cbe[m
+Author: 정인식 <insick6763@gmail.com>
+Date:   Sat Oct 3 17:17:32 2020 +0900
+
+    CURD complete
+
+[33mcommit 40d78b0652ee3557978b34b8282ca214f5a8507f[m
+Author: 정인식 <insick6763@gmail.com>
+Date:   Wed Sep 30 21:49:04 2020 +0900
+
+    show 수정
+
+[33mcommit 427f8e77e9d9cc1d584d0e9ee6a2961f14818cc3[m
+Author: 정인식 <insick6763@gmail.com>
+Date:   Wed Sep 30 17:22:24 2020 +0900
+
+    CD 구현성공 R구현중
+
+[33mcommit 2a4d2be9c05928db1068548f1c0e58565b4d144b[m
+Author: 정인식 <insick6763@gmail.com>
+Date:   Wed Sep 9 15:32:51 2020 +0900
+
+    리드미 수정
+
+[33mcommit 16f19180cbd1bbd01228c4e6e9aadd04dc8c697f[m
+Author: 정인식 <insick6763@gmail.com>
+Date:   Wed Sep 9 15:29:34 2020 +0900
+
+    틀 구현

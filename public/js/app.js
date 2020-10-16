@@ -2031,9 +2031,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       article: {
         title: '',
-        content: ''
+        content: '',
+        user_id: localStorage.id
       }
     };
+  },
+  created: function created() {
+    console.log(this.article);
   },
   methods: {
     store: function store() {
@@ -2041,7 +2045,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/articles/store', {
         'title': this.article.title,
-        'content': this.article.content
+        'content': this.article.content,
+        'user_id': this.article.user_id
       }).then(function (res) {
         console.log("글작성 성공", res);
 
@@ -7062,7 +7067,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.footer{\n    width:100%;\n    height:40px;\n    position:absolute;\n    bottom:0;\n    background:#5eaeff;\n    text-align: center;\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n.footer{\n    width:100%;\n    height:30px;\n    position:absolute;\n    bottom:0;\n    background:#5eaeff;\n    text-align: center;\n    color: white;\n}\n", ""]);
 
 // exports
 
