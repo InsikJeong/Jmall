@@ -18,6 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->unsignedBigInteger('user_id');
+            $table->string('user_name');
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

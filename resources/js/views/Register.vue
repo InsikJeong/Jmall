@@ -1,19 +1,26 @@
 <template>
-    <div>
-        <div>
-            <label for="">이름</label>
-            <input v-model="register.name" type="text">
+    <main>
+        <div class="alert alert-danger" v-if="errors.length">
+            <ul class="mb-0">
+                <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+            </ul>
         </div>
         <div>
-            <label for="">이메일</label>
-            <input v-model="register.email" type="text">
+            <div>
+                <label for="">이름</label>
+                <input v-model="register.name" type="text">
+            </div>
+            <div>
+                <label for="">이메일</label>
+                <input v-model="register.email" type="text">
+            </div>
+            <div>
+                <label for="">비밀번호</label>
+                <input v-model="register.password" type="password">
+            </div>
+            <button v-on:click="auth">회원가입</button>
         </div>
-        <div>
-            <label for="">비밀번호</label>
-            <input v-model="register.password" type="password">
-        </div>
-        <button v-on:click="auth">회원가입</button>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -55,10 +62,12 @@ export default {
                 })
                 .then((res)=>{
                     console.log("성공",res);
+                    this.$store.commit('islogged')
                     this.$router.push('/welcome');
                 })
                 .catch((err)=>{
                     console.log('실패');
+                    this.errors.push('중복된 이메일입니다.')
                 })
             }
         }

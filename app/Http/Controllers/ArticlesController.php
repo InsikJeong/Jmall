@@ -40,6 +40,7 @@ class ArticlesController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'user_id' => $request->user_id,
+            'user_name'=>$request->user_name,
         ]);
 
         return response()->json($articles,200);

@@ -8,15 +8,16 @@ import Articles_index from './views/Articles/index.vue';
 import Articles_create from './views/Articles/create.vue';
 import Articles_show from './views/Articles/show.vue';
 import Articles_edit from './views/Articles/edit.vue';
+import store from './store';
 
 Vue.use(Router);
 
-// const requireAuth = () => (to, from, next) => {
-//     if (store.state.accessToken !== '') {
-//       return next();
-//     }
-//     next('/login');
-//   };
+const requireAuth = () => (to, from, next) => {
+    if (store.state.logged == true) {
+      return next();
+    }
+    next('/login');
+  };
   
   
 const routes = [
@@ -34,7 +35,7 @@ const routes = [
         path:'/articles',
         name:'articles',
         component:Articles_index,
-        // beforeEnter: requireAuth()
+        beforeEnter: requireAuth()
     },
     {
         path:'/articles/show/:id',
