@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Articles</title>
+        <!-- icon -->
+        <!-- <link rel="shortcut icon" type="image/png" href="/tag.png"/> -->
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">

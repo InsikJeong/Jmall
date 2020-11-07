@@ -1,23 +1,26 @@
 <template>
-    <div class="login_conteiner">
-        <div class="alert alert-danger" v-if="errors.length">
-            <ul class="mb-0">
-                <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-            </ul>
+    <main>
+        <h1>Login</h1>
+        <div class="login_conteiner">
+            <div class="alert alert-danger" v-if="errors.length">
+                <ul class="mb-0">
+                    <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+                </ul>
+            </div>
+            <div>
+                <label for="">아이디</label>
+                <input v-model="user.email" type="text">
+            </div>
+            <div>
+                <label for="">비밀번호</label>
+                <input v-model="user.password" type="password">
+            </div>
+            <button v-on:click="login">로그인</button>
+            <router-link to="/register">
+                <span class="btn_register">회원가입</span>
+            </router-link>
         </div>
-        <div>
-            <label for="">아이디</label>
-            <input v-model="user.email" type="text">
-        </div>
-        <div>
-            <label for="">비밀번호</label>
-            <input v-model="user.password" type="password">
-        </div>
-        <button v-on:click="login">로그인</button>
-        <router-link to="/register">
-            <span class="btn_register">회원가입</span>
-        </router-link>
-    </div>
+    </main>
 </template>
 
 <script>

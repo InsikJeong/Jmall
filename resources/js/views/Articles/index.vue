@@ -4,10 +4,10 @@
             <h1>Articles</h1>
         </div>
         <div class="title">
-            <label for="">글 제목</label> <label for="">작성자</label>
+            <label for="" class="article_title">글 제목</label> <label for="">작성자</label>
         </div>
         <div v-for="(value,index) in articles" :key="index">
-            <label v-on:click="show(value.id)">{{value.title}} {{value.user_name}}</label>
+            <label class="article_title" v-on:click="show(value.id)">{{value.title}}</label> <label>{{value.user_name}}</label>
         </div>
         <div>
             <button  v-on:click="create">글 작성</button>
@@ -55,5 +55,8 @@ export default {
     } */
     .title>label{
         border: 1px black solid;
+    }
+    .article_title{
+        width: 800px;
     }
 </style>

@@ -1,5 +1,6 @@
 <template>
     <main>
+        <h1>Register</h1>
         <div class="alert alert-danger" v-if="errors.length">
             <ul class="mb-0">
                 <li v-for="(error, index) in errors" :key="index">{{ error }}</li>

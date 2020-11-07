@@ -2244,6 +2244,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2392,6 +2394,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2508,6 +2513,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -7160,7 +7166,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .title{\n    border: 1px black solid;\n} */\n.title>label{\n    border: 1px black solid;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .title{\n    border: 1px black solid;\n} */\n.title>label{\n    border: 1px black solid;\n}\n.article_title{\n    width: 800px;\n}\n", ""]);
 
 // exports
 
@@ -22204,14 +22210,17 @@ var render = function() {
           _c(
             "label",
             {
+              staticClass: "article_title",
               on: {
                 click: function($event) {
                   return _vm.show(value.id)
                 }
               }
             },
-            [_vm._v(_vm._s(value.title) + " " + _vm._s(value.user_name))]
-          )
+            [_vm._v(_vm._s(value.title))]
+          ),
+          _vm._v(" "),
+          _c("label", [_vm._v(_vm._s(value.user_name))])
         ])
       }),
       _vm._v(" "),
@@ -22234,7 +22243,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "title" }, [
-      _c("label", { attrs: { for: "" } }, [_vm._v("글 제목")]),
+      _c("label", { staticClass: "article_title", attrs: { for: "" } }, [
+        _vm._v("글 제목")
+      ]),
       _vm._v(" "),
       _c("label", { attrs: { for: "" } }, [_vm._v("작성자")])
     ])
@@ -22300,7 +22311,9 @@ var render = function() {
         }
       },
       [_vm._v("뒤로가기")]
-    )
+    ),
+    _vm._v(" "),
+    _c("hr")
   ])
 }
 var staticRenderFns = []
@@ -22359,81 +22372,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "login_conteiner" },
-    [
-      _vm.errors.length
-        ? _c("div", { staticClass: "alert alert-danger" }, [
-            _c(
-              "ul",
-              { staticClass: "mb-0" },
-              _vm._l(_vm.errors, function(error, index) {
-                return _c("li", { key: index }, [_vm._v(_vm._s(error))])
-              }),
-              0
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", [
-        _c("label", { attrs: { for: "" } }, [_vm._v("아이디")]),
+  return _c("main", [
+    _c("h1", [_vm._v("Login")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "login_conteiner" },
+      [
+        _vm.errors.length
+          ? _c("div", { staticClass: "alert alert-danger" }, [
+              _c(
+                "ul",
+                { staticClass: "mb-0" },
+                _vm._l(_vm.errors, function(error, index) {
+                  return _c("li", { key: index }, [_vm._v(_vm._s(error))])
+                }),
+                0
+              )
+            ])
+          : _vm._e(),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.user.email,
-              expression: "user.email"
-            }
-          ],
-          attrs: { type: "text" },
-          domProps: { value: _vm.user.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", [
+          _c("label", { attrs: { for: "" } }, [_vm._v("아이디")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user.email,
+                expression: "user.email"
               }
-              _vm.$set(_vm.user, "email", $event.target.value)
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.user.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.user, "email", $event.target.value)
+              }
             }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c("label", { attrs: { for: "" } }, [_vm._v("비밀번호")]),
+          })
+        ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.user.password,
-              expression: "user.password"
-            }
-          ],
-          attrs: { type: "password" },
-          domProps: { value: _vm.user.password },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", [
+          _c("label", { attrs: { for: "" } }, [_vm._v("비밀번호")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user.password,
+                expression: "user.password"
               }
-              _vm.$set(_vm.user, "password", $event.target.value)
+            ],
+            attrs: { type: "password" },
+            domProps: { value: _vm.user.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.user, "password", $event.target.value)
+              }
             }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.login } }, [_vm._v("로그인")]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/register" } }, [
-        _c("span", { staticClass: "btn_register" }, [_vm._v("회원가입")])
-      ])
-    ],
-    1
-  )
+          })
+        ]),
+        _vm._v(" "),
+        _c("button", { on: { click: _vm.login } }, [_vm._v("로그인")]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: "/register" } }, [
+          _c("span", { staticClass: "btn_register" }, [_vm._v("회원가입")])
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22486,6 +22503,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", [
+    _c("h1", [_vm._v("Register")]),
+    _vm._v(" "),
     _vm.errors.length
       ? _c("div", { staticClass: "alert alert-danger" }, [
           _c(
