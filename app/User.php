@@ -42,4 +42,10 @@ class User extends Authenticatable
         return $this->hasMany(Articles::class);
         // this(사용자)는 많은  가지고 있다.
     }
+
+    public function Comments(){
+        //many쪽 관계라서 복수형
+        return $this->hasMany(Comments::class);
+        // this(사용자)는 많은  가지고 있다.
+    }
 }

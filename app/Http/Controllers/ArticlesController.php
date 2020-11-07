@@ -101,4 +101,27 @@ class ArticlesController extends Controller
 
         return response()->json([],204);
     }
+
+    public function comments(Request $request){
+        $comments = $request->user()->Comments()->create([
+            'content' => $request->content,
+            'user_id' => $request->user_id,
+            'user_name'=>$request->user_name,
+            'article_id'=>$request->article_id,
+        ]);
+
+        return response()->json([],200);
+    }
+
+    public function comments_index($id){
+        $comments = \App\Comments::where('article_id',$id)->get();
+
+        return response()->json($comments,200);
+    }
+    
+    public function comments_destroy($id){
+        $comment = \App\Comments::whereId($id)->delete();
+
+        return response()->json([],204);
+    }
 }

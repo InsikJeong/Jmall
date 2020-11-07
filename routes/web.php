@@ -33,4 +33,8 @@ Route::delete('articles/delete/{id}',"ArticlesController@destroy");
 Route::get('/articles/index','ArticlesController@index');
 Route::patch('articles/update/{id}','ArticlesController@update');
 
+#게시판 댓글
+Route::post('/articles/comments','ArticlesController@comments');
+Route::get('/articles/comments_index/{id}','ArticlesController@comments_index');
+Route::delete('articles/comments_delete/{id}',"ArticlesController@comments_destroy");
 

@@ -52,7 +52,6 @@ class RegisterController extends Controller
         // $user->save();
 
         // Auth::login($user);
-        auth()->login($user);
 
         return response()->json($user,200);
 
