@@ -24,17 +24,33 @@ import axios from 'axios';
 export default {
     data(){
         return{
+            user:{
+                id:'',
+                name:'',
+                email:'',
+            },
             article:{
                 title:'',
                 content:'',
-                user_id:localStorage.id,
-                user_name:localStorage.name,
             },
             errors:[]
         }
     },
     created:function(){
         console.log(this.article);
+        axios.get('/auth/init')
+            .then((res)=>{
+                console.log('유저 정보',res.data.user);
+                if(res.data.user == null){
+                    this.user.name="Guest";
+                    this.$store.commit('notlogged');
+                }
+                else{        
+                    this.user=res.data.user;
+                    // console.log('유저 데이터 확인',this.user);
+                    this.$store.commit('islogged');
+                }
+            })
     },
     methods:{
         store(){
@@ -52,8 +68,8 @@ export default {
                 axios.post('/articles/store',{
                     'title':this.article.title,
                     'content':this.article.content,
-                    'user_id':this.article.user_id,
-                    'user_name':this.article.user_name,
+                    'user_id':this.user.id,
+                    'user_name':this.user.name,
                 }
                 )
                 .then((res)=>{

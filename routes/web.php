@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-#
 Route::get('/auth/init','LoginController@init');
 #회원가입
 Route::post('/auth/register','RegisterController@store');

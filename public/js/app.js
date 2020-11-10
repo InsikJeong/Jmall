@@ -2034,21 +2034,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      user: {
+        id: '',
+        name: '',
+        email: ''
+      },
       article: {
         title: '',
-        content: '',
-        user_id: localStorage.id,
-        user_name: localStorage.name
+        content: ''
       },
       errors: []
     };
   },
   created: function created() {
+    var _this = this;
+
     console.log(this.article);
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/auth/init').then(function (res) {
+      console.log('유저 정보', res.data.user);
+
+      if (res.data.user == null) {
+        _this.user.name = "Guest";
+
+        _this.$store.commit('notlogged');
+      } else {
+        _this.user = res.data.user; // console.log('유저 데이터 확인',this.user);
+
+        _this.$store.commit('islogged');
+      }
+    });
   },
   methods: {
     store: function store() {
-      var _this = this;
+      var _this2 = this;
 
       this.errors = [];
 
@@ -2064,12 +2082,12 @@ __webpack_require__.r(__webpack_exports__);
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/articles/store', {
           'title': this.article.title,
           'content': this.article.content,
-          'user_id': this.article.user_id,
-          'user_name': this.article.user_name
+          'user_id': this.user.id,
+          'user_name': this.user.name
         }).then(function (res) {
           console.log("글작성 성공", res);
 
-          _this.$router.push('/articles');
+          _this2.$router.push('/articles');
         })["catch"](function (err) {
           console.log('실패');
         });
@@ -2280,17 +2298,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      user: {
+        id: '',
+        name: '',
+        email: ''
+      },
       article: {
         title: '',
         content: '',
         user_id: ''
       },
-      Uid: localStorage.id,
       comment: {
         //작성 댓글
         content: '',
-        user_id: localStorage.id,
-        user_name: localStorage.name,
         article_id: this.$route.params.id
       },
       comments: {//이게 띄울 댓글
@@ -2306,6 +2326,20 @@ __webpack_require__.r(__webpack_exports__);
       _this.article = res.data;
     })["catch"](function (err) {
       console.log(err);
+    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/auth/init').then(function (res) {
+      console.log('유저 정보', res.data.user);
+
+      if (res.data.user == null) {
+        _this.user.name = "Guest";
+
+        _this.$store.commit('notlogged');
+      } else {
+        _this.user = res.data.user;
+        console.log('웰컴', _this.user);
+
+        _this.$store.commit('islogged');
+      }
     });
     this.comments_get(this.$route.params.id);
   },
@@ -2325,8 +2359,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/articles/comments', {
         'content': this.comment.content,
-        'user_id': this.comment.user_id,
-        'user_name': this.comment.user_name,
+        'user_id': this.user.id,
+        'user_name': this.user.name,
         'article_id': this.comment.article_id
       }).then(function (res) {
         console.log("댓글작성 성공", res.data);
@@ -2418,19 +2452,15 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log('이닛');
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/auth/init').then(function (res) {
+        console.log('유저 정보', res.data.user);
+
         if (res.data.user == null) {
           _this.user.name = "Guest";
-          localStorage.name = '';
-          localStorage.email = '';
-          localStorage.id = '';
 
           _this.$store.commit('notlogged');
         } else {
           _this.user = res.data.user;
           console.log('웰컴', _this.user);
-          localStorage.id = _this.user.id;
-          localStorage.name = _this.user.name;
-          localStorage.email = _this.user.email;
 
           _this.$store.commit('islogged');
         }
@@ -2509,10 +2539,9 @@ __webpack_require__.r(__webpack_exports__);
           'email': this.user.email,
           'password': this.user.password
         }).then(function (res) {
-          console.log("성공", res.data);
-          localStorage.id = _this.user.id;
-          localStorage.name = _this.user.name;
-          localStorage.email = _this.user.email;
+          console.log("성공", res.data); // localStorage.id = this.user.id;
+          // localStorage.name = this.user.name;
+          // localStorage.email = this.user.email;
 
           _this.$store.commit('islogged');
 
@@ -2564,16 +2593,14 @@ __webpack_require__.r(__webpack_exports__);
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/auth/init').then(function (res) {
       if (res.data.user == null) {
-        _this.user.name = "Guest";
-        localStorage.name = '';
-        localStorage.email = '';
-        localStorage.id = '';
+        _this.user.name = "Guest"; //   localStorage.name = '';
+        //   localStorage.email = '';
+        //   localStorage.id = '';
       } else {
         _this.user = res.data.user;
-        console.log('웰컴', _this.user);
-        localStorage.id = _this.user.id;
-        localStorage.name = _this.user.name;
-        localStorage.email = _this.user.email;
+        console.log('웰컴', _this.user); //   localStorage.id = this.user.id;
+        //   localStorage.name = this.user.name;
+        //   localStorage.email = this.user.email;
       }
     });
   },
@@ -22412,7 +22439,7 @@ var render = function() {
       _vm._v(" "),
       _c("p", [_vm._v("내용 : " + _vm._s(_vm.article.content))]),
       _vm._v(" "),
-      _vm.article.user_id == _vm.Uid
+      _vm.article.user_id == _vm.user.id
         ? _c("div", [
             _c(
               "button",
@@ -22450,7 +22477,7 @@ var render = function() {
               [_vm._v("뒤로가기")]
             )
           ])
-        : _vm.Uid == 1
+        : _vm.user.id == 1
         ? _c("div", [
             _c(
               "button",
@@ -22508,7 +22535,7 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.comments, function(value, index) {
         return _c("div", { key: index }, [
-          _vm.Uid == value.user_id
+          _vm.user.id == value.user_id
             ? _c("div", [
                 _c("label", { staticClass: "comment_text" }, [
                   _vm._v(_vm._s(value.content))
@@ -22528,7 +22555,7 @@ var render = function() {
                   [_vm._v("삭제")]
                 )
               ])
-            : _vm.Uid == 1
+            : _vm.user.id == 1
             ? _c("div", [
                 _c("label", { staticClass: "comment_text" }, [
                   _vm._v(_vm._s(value.content))

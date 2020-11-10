@@ -23,16 +23,16 @@ export default {
       .then((res)=>{
           if(res.data.user == null){
               this.user.name="Guest";
-              localStorage.name = '';
-              localStorage.email = '';
-              localStorage.id = '';
+            //   localStorage.name = '';
+            //   localStorage.email = '';
+            //   localStorage.id = '';
           }
           else{        
               this.user=res.data.user;
               console.log('웰컴',this.user);
-              localStorage.id = this.user.id;
-              localStorage.name = this.user.name;
-              localStorage.email = this.user.email;
+            //   localStorage.id = this.user.id;
+            //   localStorage.name = this.user.name;
+            //   localStorage.email = this.user.email;
           }
       })
     },

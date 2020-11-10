@@ -28,19 +28,14 @@ export default {
             console.log('이닛');
             axios.get('/auth/init')
             .then((res)=>{
+                console.log('유저 정보',res.data.user);
                 if(res.data.user == null){
                     this.user.name="Guest";
-                    localStorage.name = '';
-                    localStorage.email = '';
-                    localStorage.id = '';
                     this.$store.commit('notlogged');
                 }
                 else{        
                     this.user=res.data.user;
                     console.log('웰컴',this.user);
-                    localStorage.id = this.user.id;
-                    localStorage.name = this.user.name;
-                    localStorage.email = this.user.email;
                     this.$store.commit('islogged');
                 }
             })

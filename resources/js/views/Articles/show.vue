@@ -2,10 +2,10 @@
   <main>
     <h3>제목 : {{article.title}}</h3>
     <p>내용 : {{article.content}}</p>
-    <div v-if="article.user_id == Uid">
+    <div v-if="article.user_id == user.id">
         <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button> <button v-on:click="back()">뒤로가기</button>
     </div>
-    <div v-else-if="Uid == 1">
+    <div v-else-if="user.id == 1">
         <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button> <button v-on:click="back()">뒤로가기</button>
     </div>
     <div v-else>
@@ -16,10 +16,10 @@
         <h4 for="" class="comments_content">Comment</h4>
     </div>
     <div v-for="(value,index) in comments" :key="index">
-        <div v-if="Uid == value.user_id">
+        <div v-if="user.id == value.user_id">
             <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button v-on:click="comments_del(value.id)">삭제</button>
         </div>
-        <div v-else-if="Uid == 1">
+        <div v-else-if="user.id == 1">
             <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button v-on:click="comments_del(value.id)">삭제</button>
         </div>
         <div v-else>
@@ -41,16 +41,18 @@ import axios from 'axios';
 export default {
     data(){
         return{
+            user:{
+                id:'',
+                name:'',
+                email:'',
+            },
             article:{
                 title:'',
                 content:'',
                 user_id:'',
             },
-            Uid:localStorage.id,
             comment:{ //작성 댓글
                 content:'',
-                user_id:localStorage.id,
-                user_name:localStorage.name,
                 article_id:this.$route.params.id,
             },
             comments:{ //이게 띄울 댓글
@@ -70,6 +72,20 @@ export default {
             console.log(err);
         })
 
+        axios.get('/auth/init')
+            .then((res)=>{
+                console.log('유저 정보',res.data.user);
+                if(res.data.user == null){
+                    this.user.name="Guest";
+                    this.$store.commit('notlogged');
+                }
+                else{        
+                    this.user=res.data.user;
+                    console.log('웰컴',this.user);
+                    this.$store.commit('islogged');
+                }
+            })
+
         this.comments_get(this.$route.params.id);
     },
     methods:{
@@ -86,8 +102,8 @@ export default {
         comment11(){
             axios.post('/articles/comments',{
                     'content':this.comment.content,
-                    'user_id':this.comment.user_id,
-                    'user_name':this.comment.user_name,
+                    'user_id':this.user.id,
+                    'user_name':this.user.name,
                     'article_id':this.comment.article_id,
                 }
                 )

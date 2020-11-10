@@ -60,9 +60,9 @@ export default {
                 )
                 .then((res)=>{
                     console.log("성공",res.data);
-                    localStorage.id = this.user.id;
-                    localStorage.name = this.user.name;
-                    localStorage.email = this.user.email;
+                    // localStorage.id = this.user.id;
+                    // localStorage.name = this.user.name;
+                    // localStorage.email = this.user.email;
                     this.$store.commit('islogged')
                     this.$router.push('/')
                 })
