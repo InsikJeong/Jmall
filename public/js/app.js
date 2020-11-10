@@ -2260,14 +2260,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       article: {
         title: '',
-        content: ''
+        content: '',
+        user_id: ''
       },
+      Uid: localStorage.id,
       comment: {
         //작성 댓글
         content: '',
@@ -22394,41 +22412,95 @@ var render = function() {
       _vm._v(" "),
       _c("p", [_vm._v("내용 : " + _vm._s(_vm.article.content))]),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.edit(_vm.article.id)
-            }
-          }
-        },
-        [_vm._v("수정")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.del(_vm.article.id)
-            }
-          }
-        },
-        [_vm._v("삭제")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.back()
-            }
-          }
-        },
-        [_vm._v("뒤로가기")]
-      ),
+      _vm.article.user_id == _vm.Uid
+        ? _c("div", [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.edit(_vm.article.id)
+                  }
+                }
+              },
+              [_vm._v("수정")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.del(_vm.article.id)
+                  }
+                }
+              },
+              [_vm._v("삭제")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.back()
+                  }
+                }
+              },
+              [_vm._v("뒤로가기")]
+            )
+          ])
+        : _vm.Uid == 1
+        ? _c("div", [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.edit(_vm.article.id)
+                  }
+                }
+              },
+              [_vm._v("수정")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.del(_vm.article.id)
+                  }
+                }
+              },
+              [_vm._v("삭제")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.back()
+                  }
+                }
+              },
+              [_vm._v("뒤로가기")]
+            )
+          ])
+        : _c("div", [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.back()
+                  }
+                }
+              },
+              [_vm._v("뒤로가기")]
+            )
+          ]),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
@@ -22436,23 +22508,53 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.comments, function(value, index) {
         return _c("div", { key: index }, [
-          _c("label", { staticClass: "comment_text" }, [
-            _vm._v(_vm._s(value.content))
-          ]),
-          _vm._v(" "),
-          _c("label", [_vm._v(_vm._s(value.user_name))]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.comments_del(value.id)
-                }
-              }
-            },
-            [_vm._v("삭제")]
-          )
+          _vm.Uid == value.user_id
+            ? _c("div", [
+                _c("label", { staticClass: "comment_text" }, [
+                  _vm._v(_vm._s(value.content))
+                ]),
+                _vm._v(" "),
+                _c("label", [_vm._v(_vm._s(value.user_name))]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.comments_del(value.id)
+                      }
+                    }
+                  },
+                  [_vm._v("삭제")]
+                )
+              ])
+            : _vm.Uid == 1
+            ? _c("div", [
+                _c("label", { staticClass: "comment_text" }, [
+                  _vm._v(_vm._s(value.content))
+                ]),
+                _vm._v(" "),
+                _c("label", [_vm._v(_vm._s(value.user_name))]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.comments_del(value.id)
+                      }
+                    }
+                  },
+                  [_vm._v("삭제")]
+                )
+              ])
+            : _c("div", [
+                _c("label", { staticClass: "comment_text" }, [
+                  _vm._v(_vm._s(value.content))
+                ]),
+                _vm._v(" "),
+                _c("label", [_vm._v(_vm._s(value.user_name))])
+              ])
         ])
       }),
       _vm._v(" "),

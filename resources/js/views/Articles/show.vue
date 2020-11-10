@@ -2,13 +2,29 @@
   <main>
     <h3>제목 : {{article.title}}</h3>
     <p>내용 : {{article.content}}</p>
-    <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button> <button v-on:click="back()">뒤로가기</button>
+    <div v-if="article.user_id == Uid">
+        <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button> <button v-on:click="back()">뒤로가기</button>
+    </div>
+    <div v-else-if="Uid == 1">
+        <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button> <button v-on:click="back()">뒤로가기</button>
+    </div>
+    <div v-else>
+        <button v-on:click="back()">뒤로가기</button>
+    </div>
     <hr>
     <div class="title">
         <h4 for="" class="comments_content">Comment</h4>
     </div>
     <div v-for="(value,index) in comments" :key="index">
-        <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button v-on:click="comments_del(value.id)">삭제</button>
+        <div v-if="Uid == value.user_id">
+            <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button v-on:click="comments_del(value.id)">삭제</button>
+        </div>
+        <div v-else-if="Uid == 1">
+            <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button v-on:click="comments_del(value.id)">삭제</button>
+        </div>
+        <div v-else>
+            <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label>
+        </div>
     </div>
     <hr>
     <br>
@@ -28,7 +44,9 @@ export default {
             article:{
                 title:'',
                 content:'',
+                user_id:'',
             },
+            Uid:localStorage.id,
             comment:{ //작성 댓글
                 content:'',
                 user_id:localStorage.id,
