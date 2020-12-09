@@ -3,13 +3,13 @@
     <h3>제목 : {{article.title}}</h3>
     <p>내용 : {{article.content}}</p>
     <div v-if="article.user_id == user.id">
-        <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button> <button v-on:click="back()">뒤로가기</button>
+        <button v-on:click="edit(article.id)" class="btn btn-success">수정</button> <button class="btn btn-danger" v-on:click="del(article.id)">삭제</button> <button class="btn btn-warning" v-on:click="back()">뒤로가기</button>
     </div>
     <div v-else-if="user.id == 1">
-        <button v-on:click="edit(article.id)">수정</button> <button v-on:click="del(article.id)">삭제</button> <button v-on:click="back()">뒤로가기</button>
+        <button v-on:click="edit(article.id)" class="btn btn-success">수정</button> <button class="btn btn-danger" v-on:click="del(article.id)">삭제</button> <button class="btn btn-warning" v-on:click="back()">뒤로가기</button>
     </div>
     <div v-else>
-        <button v-on:click="back()">뒤로가기</button>
+        <button class="btn btn-warning" v-on:click="back()">뒤로가기</button>
     </div>
     <hr>
     <div class="title">
@@ -17,10 +17,10 @@
     </div>
     <div v-for="(value,index) in comments" :key="index">
         <div v-if="user.id == value.user_id">
-            <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button v-on:click="comments_del(value.id)">삭제</button>
+            <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button class="btn btn-danger" v-on:click="comments_del(value.id)">삭제</button>
         </div>
         <div v-else-if="user.id == 1">
-            <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button v-on:click="comments_del(value.id)">삭제</button>
+            <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label> <button class="btn btn-danger" v-on:click="comments_del(value.id)">삭제</button>
         </div>
         <div v-else>
             <label class="comment_text">{{value.content}}</label> <label>{{value.user_name}}</label>
@@ -31,7 +31,7 @@
     <div>
         <label for="">내용</label>
         <input v-model="comment.content" type="textarea" class="comment_text">
-        <button v-on:click="comment11()">작성</button> 
+        <button v-on:click="comment11()" class="btn btn-primary">작성</button> 
     </div>
   </main>
 </template>

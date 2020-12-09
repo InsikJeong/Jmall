@@ -9,7 +9,7 @@
             <label for="">내용</label>
             <input v-model="article.content" type="textarea">
         </div>
-        <button v-on:click="update(article.id)">수정</button> <button v-on:click="back()">뒤로가기</button>
+        <button v-on:click="update(article.id)" class="btn btn-success">수정</button> <button v-on:click="back()">뒤로가기</button>
     </div>  
   </main>
 </template>

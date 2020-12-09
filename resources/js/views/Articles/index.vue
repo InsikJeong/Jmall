@@ -12,7 +12,7 @@
         </div>
         <hr>
         <div>
-            <button  v-on:click="create">글 작성</button>
+            <button  v-on:click="create" class="btn btn-primary">글 작성</button>
         </div>
     </main>
 </template>

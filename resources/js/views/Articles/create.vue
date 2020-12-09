@@ -12,9 +12,9 @@
             </div>
             <div>
                 <label for="">내용</label>
-                <input v-model="article.content" type="textarea">
+                <input v-model="article.content" type="textarea" class="content">
             </div>
-            <button v-on:click="store">작성</button>
+            <button class="btn btn-primary" v-on:click="store">작성</button>
         </div>  
     </main>
 </template>
@@ -86,5 +86,8 @@ export default {
 </script>
 
 <style>
-
+    .content{
+        width: 500px;
+        height: 500px;
+    }
 </style>

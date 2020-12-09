@@ -15,9 +15,9 @@
                 <label for="">비밀번호</label>
                 <input v-model="user.password" type="password">
             </div>
-            <button v-on:click="login">로그인</button>
+            <button v-on:click="login" class="btn btn-primary">로그인</button>
             <router-link to="/register">
-                <span class="btn_register">회원가입</span>
+                <span class="btn_register btn btn-danger">회원가입</span>
             </router-link>
         </div>
     </main>

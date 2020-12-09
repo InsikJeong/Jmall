@@ -19,7 +19,7 @@
                 <label for="">비밀번호</label>
                 <input v-model="register.password" type="password">
             </div>
-            <button v-on:click="auth">회원가입</button>
+            <button class="btn btn-danger" v-on:click="auth">회원가입</button>
         </div>
     </main>
 </template>
