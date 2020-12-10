@@ -23413,7 +23413,7 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c("div", [
-          _c("label", { attrs: { for: "" } }, [_vm._v("아이디")]),
+          _c("label", { attrs: { for: "" } }, [_vm._v("이메일")]),
           _vm._v(" "),
           _c("input", {
             directives: [

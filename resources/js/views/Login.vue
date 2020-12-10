@@ -8,7 +8,7 @@
                 </ul>
             </div>
             <div>
-                <label for="">아이디</label>
+                <label for="">이메일</label>
                 <input v-model="user.email" type="text">
             </div>
             <div>
