@@ -13,7 +13,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles=\App\Articles::get();
+        $articles=\App\Articles::paginate(5);
 
         return response()->json($articles,200);
     }

@@ -10,6 +10,7 @@ import 'bootstrap';
 
 Vue.component('Header-component',Header);
 Vue.component('Footer-component',Footer);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 new Vue({
     el: '#app', 

@@ -10,6 +10,12 @@
         <div v-for="(value,index) in articles" :key="index">
             <label class="article_title" v-on:click="show(value.id)">{{value.title}}</label> <label>{{value.user_name}}</label>
         </div>
+        <nav>
+            <pagination
+                :data="page"
+                @pagination-change-page="fetchPosts"
+            />
+        </nav>
         <hr>
         <div>
             <button  v-on:click="create" class="btn btn-primary">글 작성</button>
@@ -26,18 +32,21 @@ export default {
                 title:'',
                 content:'',
                 user_name:'',
-            }
+            },
+            page:{}
         }
     },
     created:function(){
-        axios.get('articles/index')
-        .then((res)=>{
-            console.log(res.data)
-            this.articles = res.data;
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        this.fetchPosts(1);
+        // axios.get('articles/index')
+        // .then((res)=>{
+        //     console.log(res.data)
+        //     this.articles = res.data.data;
+        //     this.page = res.data;
+        // })
+        // .catch((err)=>{
+        //     console.log(err);
+        // })
     },
     methods:{
         create(){
@@ -47,6 +56,17 @@ export default {
             // this.$router.push('/articles/show/'+id);
             this.$router.push({ name:'articles_show', params : {id:id} });
         },
+        fetchPosts(page) {
+            axios.get('articles/index', {
+                params: {
+                page: page || 1,
+                },
+            })
+            .then((res)=>{
+                this.articles = res.data.data;
+                this.page = res.data;
+            });
+      }
     }
 }
 </script>
