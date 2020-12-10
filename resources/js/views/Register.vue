@@ -63,7 +63,7 @@ export default {
                 })
                 .then((res)=>{
                     console.log("성공",res);
-                    this.$store.commit('islogged')
+                    // this.$store.commit('islogged')
                     this.$router.push('/login');
                 })
                 .catch((err)=>{

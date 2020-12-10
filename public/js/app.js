@@ -2703,9 +2703,7 @@ __webpack_require__.r(__webpack_exports__);
           'email': this.register.email,
           'password': this.register.password
         }).then(function (res) {
-          console.log("성공", res);
-
-          _this.$store.commit('islogged');
+          console.log("성공", res); // this.$store.commit('islogged')
 
           _this.$router.push('/login');
         })["catch"](function (err) {
